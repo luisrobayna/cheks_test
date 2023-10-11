@@ -1,0 +1,51 @@
+name: Checking workflows
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        required: true
+        default: 'none'
+      environment:
+        type: string
+        required: true
+        default: 'none'
+      cluster_name:
+        type: string
+        required: true
+        default: 'none'
+
+jobs:
+  check_version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check parametros de entrada
+        run: |
+         if [[${{ github.event.version }} == 'none' ]]; then
+          echo "Version no valida"
+          exit 1
+         fi
+          echo "version valida"
+
+  check_environment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check parametros de entrada
+        run: |
+          if [[${{ github.event.environment }} == 'none' ]]; then
+          echo "environment no valida"
+          exit 1
+          fi
+          echo "environment valida"
+
+  check_cluster:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check parametros de entrada
+        run: |
+          if [[${{ github.event.cluster_name }} == 'none' ]]; then
+          echo "cluster_name no valida"
+          exit 1
+          fi
+          echo "cluster_name valida"
