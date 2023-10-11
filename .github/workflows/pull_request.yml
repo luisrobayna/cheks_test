@@ -1,0 +1,55 @@
+name: Compile and run tests
+
+env:
+  JAVA_VERSION: 11
+  NODE_VERSION: 10.19.0
+
+on:
+  pull_request:
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    continue-on-error: false
+    steps:
+
+      - name: Clean workspace
+        run: find -delete
+
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Run your build and tests
+        run: |
+          echo "Building and testing your code in ${{github.event.pull_request.head.ref}}"
+
+      - name: Validate branch name
+        run: |
+          echo "Validating if branch name start with ${{env.BRANCH_PREFIX}}"
+          if [[ ${{ github.event.pull_request.head.ref }} =~ ^[a-zA-Z0-9_-]+$ ]]; then
+            echo "El nombre de la rama es ${{ github.event.pull_request.head.ref }} y cumple con el patron"
+          else
+            echo "El nombre de la rama no cumple con el patron"
+            exit 1
+          fi 
+
+     # - name: Set up Java ${{env.JAVA_VERSION}}
+      #  uses: actions/setup-java@v3
+       # with:
+        #  distribution: 'corretto'
+         # java-version: ${{env.JAVA_VERSION}}
+
+      #- name: List directory contents
+       # run: pwd
+
+      #- name: Build and Test
+       # run: |
+        #  mvn -q clean install
+         # mvn -B test
+         # echo "All the tests are succeds"
+
+
+
+

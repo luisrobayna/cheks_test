@@ -36,6 +36,14 @@ jobs:
          fi
           echo "version valida"
 
+      - name: check branch is not master
+        run: |
+          if [[ ${{ github.ref_name }} == 'rama-dos' ]]; then
+            echo "La rama no puede ser rama-dos"
+            exit 1
+          fi
+          echo "${{ github.ref_name }} , este es el nombre de la rama"
+
   check_environment:
     runs-on: ubuntu-latest
     steps:
@@ -53,7 +61,7 @@ jobs:
       - name: check parametros de entrada
         run: |
           if [[ '${{ github.event.inputs.cluster_name }}' == 'none' ]]; then
-          echo "cluster_name no valida"
+          echo "cluster_name no valida dsda"
           exit 1
           fi
           echo "cluster_name valida"
