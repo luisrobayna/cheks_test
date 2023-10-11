@@ -42,6 +42,7 @@ jobs:
             echo "La rama no puede ser main"
             exit 1
           fi
+          echo "${{ github.ref_name }} , este es el nombre de la rama"
 
   check_environment:
     runs-on: ubuntu-latest
