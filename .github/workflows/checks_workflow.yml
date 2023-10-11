@@ -36,6 +36,13 @@ jobs:
          fi
           echo "version valida"
 
+      - name: check branch is not master
+        run: |
+          if [[ ${{ github.ref_name }} == 'main' ]]; then
+            echo "La rama no puede ser main"
+            exit 1
+          fi
+
   check_environment:
     runs-on: ubuntu-latest
     steps:
