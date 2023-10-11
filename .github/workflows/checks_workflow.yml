@@ -22,7 +22,7 @@ jobs:
     steps:
       - name: check parametros de entrada
         run: |
-         if [[${{ github.event.inputs.version }} == 'none' ]]; then
+         if [[ '${{ github.event.inputs.version }}' == 'none' ]]; then
           echo "Version no valida"
           exit 1
          fi
@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: check parametros de entrada
         run: |
-          if [[${{ github.event.inputs.environment }} == 'none' ]]; then
+          if [[ '${{ github.event.inputs.environment }}' == 'none' ]]; then
           echo "environment no valida"
           exit 1
           fi
@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: check parametros de entrada
         run: |
-          if [[${{ github.event.inputs.cluster_name }} == 'none' ]]; then
+          if [[ '${{ github.event.inputs.cluster_name }}' == 'none' ]]; then
           echo "cluster_name no valida"
           exit 1
           fi
