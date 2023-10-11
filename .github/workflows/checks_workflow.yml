@@ -15,6 +15,14 @@ on:
         type: string
         required: true
         default: 'none'
+      user_name:
+        type: string
+        required: false
+        default: 'none'
+      password:
+        type: string
+        required: false
+        default: 'none'
 
 jobs:
   check_version:
@@ -49,3 +57,9 @@ jobs:
           exit 1
           fi
           echo "cluster_name valida"
+
+  call_workflow_check:
+    uses: ./.github/workflows/workflow_called.yml
+    with:
+      user_name: ${{github.event.inputs.user}}
+      password: ${{github.event.inputs.password}}

@@ -1,0 +1,32 @@
+name: workflow called to check
+
+on:
+  workflow_call:
+    inputs:
+      user_name:
+        type: string
+        required: true
+      password:
+        type: string
+        required: false
+        default: none
+
+jobs:
+  check_account:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check user
+        run: |
+          if [[ '${{ inputs.user_name }}' == 'none' ]]; then
+          echo "user_name no valid"
+          exit 1
+          fi
+          echo "user_name valid"
+
+      - name: Check password
+        run: |
+          if [[ '${{ inputs.password }}' == 'none' ]]; then
+          echo "password no valid"
+          exit 1
+          fi
+          echo "password valid"
