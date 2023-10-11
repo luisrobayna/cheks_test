@@ -38,8 +38,8 @@ jobs:
 
       - name: check branch is not master
         run: |
-          if [[ ${{ github.ref_name }} == 'main' ]]; then
-            echo "La rama no puede ser main"
+          if [[ ${{ github.ref_name }} == 'rama-dos' ]]; then
+            echo "La rama no puede ser rama-dos"
             exit 1
           fi
           echo "${{ github.ref_name }} , este es el nombre de la rama"
