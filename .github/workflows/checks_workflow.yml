@@ -49,3 +49,9 @@ jobs:
           exit 1
           fi
           echo "cluster_name valida"
+
+  call_workflow_check:
+    uses: ./.github/workflows/workflow_called.yml
+    with:
+      user_name: ${{github.event.inputs.user}}
+      password: ${{github.event.inputs.password}}
