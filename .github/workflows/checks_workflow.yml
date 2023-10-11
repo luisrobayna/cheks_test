@@ -53,7 +53,7 @@ jobs:
       - name: check parametros de entrada
         run: |
           if [[ '${{ github.event.inputs.cluster_name }}' == 'none' ]]; then
-          echo "cluster_name no valida"
+          echo "cluster_name no valida dsda"
           exit 1
           fi
           echo "cluster_name valida"
